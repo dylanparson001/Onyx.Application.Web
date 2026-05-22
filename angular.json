@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "fe372571-a6b0-4a47-b957-ca8f99e42fa0"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -25,7 +26,8 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/shared/styles/button-styles.css"
             ]
           },
           "configurations": {

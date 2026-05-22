@@ -1,0 +1,15 @@
+<form (ngSubmit)="attemptLogin()">
+  <h1 class="header">Onyx Login</h1>
+
+  <div class="label-input">
+    <label class="login-labels">Username</label>
+    <input class="text-fields" type="text" [formField]="loginForm.username"/>
+  </div>
+
+  <div class="label-input">
+    <label class="login-labels">Password</label>
+    <input class="text-fields" type="password" [formField]="loginForm.password"/>
+  </div>
+
+  <button class="primary-button" >Login</button>
+</form>
