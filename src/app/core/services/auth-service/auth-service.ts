@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {UrlConstants} from '../constants/url-constants';
 import {HttpClient} from '@angular/common/http';
 import {LoginResponse} from '../../../shared/dtos/Auth/LoginResponse';
+import {firstValueFrom} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -17,22 +18,24 @@ export class AuthService {
     this.httpClient = http;
   }
 
-  attemptLogin(loginDto: LoginDto) {
-
+  async attemptLogin(loginDto: LoginDto): Promise<LoginResponse> {
+    let loginResponse: LoginResponse = {
+      userName: '',
+      token: '',
+      tokenExpires: new Date(),
+      tokenType: '',
+      roles: []
+    };
     try {
-      this.httpClient.post<LoginResponse>(this.loginUrl, loginDto).subscribe({
-        next: result => {
-          console.log(result.username)
-          console.log(result.token)
 
-        },
-        error: result => {
-          console.log(result)
-        }
-      })
+      loginResponse = await firstValueFrom(
+        this.httpClient.post<LoginResponse>(this.loginUrl, loginDto),
+      )
+
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
+    return loginResponse;
   }
 
 }

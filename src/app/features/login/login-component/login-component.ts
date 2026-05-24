@@ -3,6 +3,7 @@ import {delay} from 'rxjs';
 import {form, FormField} from '@angular/forms/signals';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from '../../../core/services/auth-service/auth-service';
+import {LoginResponse} from '../../../shared/dtos/Auth/LoginResponse';
 
 @Component({
   selector: 'app-login-component',
@@ -18,8 +19,13 @@ export class LoginComponent {
   private authService: AuthService = inject(AuthService);
   loginForm = form(this.loginDto)
 
-  protected attemptLogin() {
-    this.authService.attemptLogin(this.loginDto());
+  protected async attemptLogin() {
+    let loginResponse = await this.authService.attemptLogin(this.loginDto());
+    console.log(loginResponse);
+    if (loginResponse.userName != '') {
+      // Navigate to dashboard
+       console.log('Login Successful')
+    }
 
     this.clearForm()
   }
