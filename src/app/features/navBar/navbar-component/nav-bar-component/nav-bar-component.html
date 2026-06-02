@@ -1,0 +1,8 @@
+  <nav class="navbar">
+    <div class="logo">Onyx</div>
+    <ul class="nav-links">
+      <li><a [routerLink]="[OnyxRoutes.Home]" routerLinkActive="active">Home</a></li>
+      <li><a [routerLink]="[OnyxRoutes.Login]" (click)="logoutUser()">Logout</a></li>
+      <!--    <li><a routerLink="/contact" routerLinkActive="active">Invoices</a></li>-->
+    </ul>
+  </nav>

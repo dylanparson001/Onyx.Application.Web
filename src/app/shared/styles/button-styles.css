@@ -9,9 +9,18 @@
 
 .primary-button {
   background-color: forestgreen;
+  color: white;
   font-weight: bold;
   border: solid 1px white;
-  color: white;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+}
+
+.secondary-button {
+  background-color: white;
+  color: forestgreen;
+  border: solid 1px forestgreen;
+  font-weight: bold;
   padding: 0.8rem;
   border-radius: 0.8rem;
 }

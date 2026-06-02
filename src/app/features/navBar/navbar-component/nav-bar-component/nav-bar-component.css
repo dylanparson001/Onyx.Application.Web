@@ -1,0 +1,31 @@
+/* Remove default margin/padding and list bullets */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Logo on left, links on right */
+  align-items: center;
+  background-color: #333;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+.nav-links {
+  display: flex;
+  list-style: none; /* Removes bullet points */
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff6347; /* Hover color effect */
+}
