@@ -1,10 +1,8 @@
-import {Component, computed, inject, signal} from '@angular/core';
-import {delay} from 'rxjs';
+import {Component, inject, signal} from '@angular/core';
 import {form, FormField} from '@angular/forms/signals';
 import {FormsModule} from '@angular/forms';
-import {AuthService} from '../../../core/services/auth-service/auth-service';
-import {LoginResponse} from '../../../shared/dtos/Auth/login-response';
 import {NavManager} from '../../../core/managers/nav-manager';
+import {AuthManager} from '../../../core/managers/auth-manager';
 import {NavigationPaths} from '../../../shared/enums/navigation-paths';
 
 @Component({
@@ -17,7 +15,7 @@ import {NavigationPaths} from '../../../shared/enums/navigation-paths';
   styleUrl: './login-component.css',
 })
 export class LoginComponent {
-  private authService: AuthService = inject(AuthService);
+  private authManager: AuthManager = inject(AuthManager);
   private navManager: NavManager = inject(NavManager);
 
   loginDto = signal<LoginDto>({username: '', password: ''});
@@ -26,19 +24,15 @@ export class LoginComponent {
   protected async attemptLogin() {
     try {
 
-      let loginResponse = await this.authService.attemptLogin(this.loginDto());
-      console.log(loginResponse);
-      if (loginResponse.token != '') {
+      let loginResponse = await this.authManager.attemptLogin(this.loginDto());
 
-        localStorage.setItem('token', loginResponse.token);
-        localStorage.setItem('token', loginResponse.token);
+      if (loginResponse) {
         await this.navManager.navigateTo(NavigationPaths.Home)
-
       }
-
       this.clearForm()
 
     } catch (ex) {
+      console.log(ex);
 
     }
   }

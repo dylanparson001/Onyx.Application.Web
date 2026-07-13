@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 import {LoginComponent} from './features/login/login-component/login-component'
 import {HomeComponent} from './features/home/home-component/home-component';
-import {AuthGuard} from './core/guards/AuthGuard';
+import {AuthGuard} from './core/guards/auth-guard';
 import {AuthenticatedLayoutComponent} from './shared/authenticated-layout-component/authenticated-layout-component';
 import {AuthInterceptor} from './core/interceptors/auth-interceptor';
 

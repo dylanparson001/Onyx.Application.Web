@@ -5,7 +5,7 @@ import {NavManager} from './core/managers/nav-manager';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavBarComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -18,7 +18,6 @@ export class App {
 
       let navBar = document.getElementsByClassName('navbar');
       navBar.item(0)?.classList.add('hidden')
-      console.log(navBar);
     }
   }
 

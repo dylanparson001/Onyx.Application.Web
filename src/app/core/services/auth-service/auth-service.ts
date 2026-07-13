@@ -12,6 +12,30 @@ export class AuthService {
     this.httpClient = http;
   }
 
+  getToken(): string {
+
+    try {
+      let token = localStorage.getItem('token');
+
+      if (!token) {
+        return "";
+      }
+      return token;
+
+    } catch (ex) {
+      console.log(ex)
+      return '';
+    }
+  }
+
+  getRole(): string {
+    return '';
+  }
+
+  // isAuthenticated(): boolean {
+  //   return !!this.getToken();
+  // }
+
   async attemptLogin(loginDto: LoginDto): Promise<LoginResponse> {
     let loginResponse: LoginResponse = {
       userName: '',

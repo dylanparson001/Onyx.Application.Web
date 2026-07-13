@@ -1,1 +1,8 @@
-<p>home-component works!</p>
+<div>
+
+  @if (activeTechnicians()) {
+    @for (tech of activeTechnicians(); track tech.id) {
+      <p>{{ tech.firstName }} {{ tech.lastName }}</p>
+    }
+  }
+</div>
